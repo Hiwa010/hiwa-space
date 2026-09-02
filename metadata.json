@@ -1,0 +1,6 @@
+{
+  "name": "Hiwa Space",
+  "description": "Creative visual solutions specializing in Logo Design, Posters & Covers, Commercial Video Editing, and 60fps Motion Graphics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
