@@ -10,7 +10,8 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { SiteConfig, ThemePreset } from '../types';
-import { DEFAULT_THEMES } from '../data/defaultContent';
+// لێرەدا getFrameUrl بانگکراوەتەوە
+import { DEFAULT_THEMES, getFrameUrl } from '../data/defaultContent';
 
 interface HeroParallaxProps {
   config: SiteConfig;
@@ -34,16 +35,13 @@ export const HeroParallax: React.FC<HeroParallaxProps> = ({
     >
       <div className="relative w-full min-h-screen flex flex-col justify-between rounded-b-[36px] md:rounded-b-[54px] border-b border-white/10 overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.95)] bg-[#090a0f]">
         
-        {/* Fallback solid background and clean image */}
         <div className="absolute inset-0 bg-[#070709] -z-10" />
+        
+        {/* وێنە سەرەکییەکە بەکارهێنراوەتەوە بێ ئەوەی قورس بێت */}
         <img
-          src="/frames/frame_0000.webp"
-          alt="Hero Background"
+          src={getFrameUrl(0)}
+          alt="Hiwa Space Background"
           className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none opacity-80"
-          onError={(e) => {
-            // Fallback if webp is missing
-            (e.target as HTMLImageElement).style.display = 'none';
-          }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#08080c] via-black/40 to-[#08080c]/80 pointer-events-none" />
@@ -56,7 +54,6 @@ export const HeroParallax: React.FC<HeroParallaxProps> = ({
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col justify-between px-6 pt-24 pb-8 md:px-12 md:pt-28 md:pb-12 min-h-screen">
           
-          {/* TOP BAR */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md px-3.5 py-1.5 text-xs font-mono">
               <span
@@ -80,7 +77,6 @@ export const HeroParallax: React.FC<HeroParallaxProps> = ({
             </div>
           </div>
 
-          {/* MIDDLE SECTION */}
           <div className="my-auto max-w-4xl py-12">
             <AnimatePresence mode="wait">
               <motion.div
@@ -148,7 +144,6 @@ export const HeroParallax: React.FC<HeroParallaxProps> = ({
             </AnimatePresence>
           </div>
 
-          {/* BOTTOM SECTION */}
           <div className="relative pt-4">
             <div className="mb-4 flex items-center justify-center">
               <div className="flex flex-wrap items-center justify-center gap-1.5 rounded-2xl border border-white/10 bg-black/70 p-1.5 backdrop-blur-md">
