@@ -181,10 +181,10 @@ export const LEARNING_PATHS: LearningPath[] = [
 ];
 
 export const PORTFOLIO_CATEGORIES = [
-  { id: 'all', name: 'All Works', count: 10 },
+  { id: 'all', name: 'All Works', count: 11 },
   { id: 'Video Editing', name: 'Video Editing', count: 0, icon: 'Film', description: 'High-energy commercial reels, speed-ramped edits & 4K cinematic storytelling.' },
   { id: 'Posters & Covers', name: 'Posters & Covers', count: 1, icon: 'Image', description: 'Album artworks, event key visuals & typographic editorial posters.' },
-  { id: 'Motion Graphics', name: 'Motion Graphics', count: 0, icon: 'Zap', description: 'Kinetic typography, 3D particle logo reveals & fluid UI micro-interactions.' },
+  { id: 'Motion Graphics', name: 'Motion Graphics', count: 1, icon: 'Zap', description: 'Kinetic typography, 3D particle logo reveals & fluid UI micro-interactions.' },
   { id: 'Movie Edits', name: 'Movie Edits', count: 2, icon: 'Clapperboard', description: 'Atmospheric scene montages, dialogue pacing, soundscapes & blockbuster cinematic grades.' },
   { id: 'Anime Edits', name: 'Anime Edits', count: 1, icon: 'Flame', description: 'Beat-synced AMVs, optical flow transitions, impact frame syncing & stylized anime VFX.' },
   { id: 'Fun & Casual Edits', name: 'Fun & Casual Edits', count: 4, icon: 'Sparkles', description: 'Playful community edits, humorous meme cutdowns, casual gaming montages & viral social reels.' },
@@ -283,7 +283,33 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     highlightMetric: 'Complete 10-Slide Visual Identity, Packaging & Video Suite',
   },
 
-  // 3. MOTION GRAPHICS (0 Active Items)
+  // 3. MOTION GRAPHICS (1 Active Item)
+  {
+    id: 'motion-1',
+    title: 'The Father of fx " zindan snrz "',
+    category: 'Motion Graphics',
+    client: 'Hiwa Space',
+    year: '2024',
+    description: 'High-impact motion graphics & visual effects showcase featuring intricate kinetic effects, sound design synchronization, and stylized 60fps VFX composition.',
+    image: 'https://img.youtube.com/vi/rj7nmzFgchY/maxresdefault.jpg',
+    gallery: [
+      {
+        url: 'https://www.youtube.com/embed/rj7nmzFgchY',
+        remoteUrl: 'https://youtu.be/rj7nmzFgchY',
+        label: 'The Father of fx " zindan snrz "',
+        type: 'video',
+      },
+    ],
+    tags: ['#MotionGraphics', '#VFX', '#VisualEffects', '#AfterEffects', '#KineticFX', '#SoundSync'],
+    tools: ['After Effects', 'Premiere Pro', 'VFX Plugins'],
+    aspectRatio: 'landscape',
+    deliverables: [
+      'Full HD 60fps Motion Graphics Cut',
+      'Complex Visual Effects & Composite Stacks',
+      'Audio-Visual Beat Sync & Sound Design',
+    ],
+    highlightMetric: 'Complex kinetic visual effects & dynamic sound synchronization',
+  },
 
   // 4. MOVIE EDITS
   {

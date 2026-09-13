@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  Sliders, 
   Sparkles, 
   ChevronDown, 
   Instagram, 
@@ -11,21 +10,18 @@ import {
 } from 'lucide-react';
 import { SiteConfig, ThemePreset } from '../types';
 // لێرەدا getFrameUrl بانگکراوەتەوە
-import { DEFAULT_THEMES, getFrameUrl } from '../data/defaultContent';
+import { getFrameUrl } from '../data/defaultContent';
 
 interface HeroParallaxProps {
   config: SiteConfig;
   activeTheme: ThemePreset;
-  onThemeChange: (index: number) => void;
-  onOpenCustomizer: () => void;
+  onOpenCustomizer?: () => void;
   onJoinClick: () => void;
 }
 
 export const HeroParallax: React.FC<HeroParallaxProps> = ({
   config,
   activeTheme,
-  onThemeChange,
-  onOpenCustomizer,
   onJoinClick,
 }) => {
   return (
@@ -63,17 +59,6 @@ export const HeroParallax: React.FC<HeroParallaxProps> = ({
               <span className="font-semibold tracking-wider text-white">
                 {activeTheme.badge}
               </span>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <button
-                onClick={onOpenCustomizer}
-                className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-white hover:bg-white/20 transition-all"
-                style={{ borderColor: `${activeTheme.accentColor}60` }}
-              >
-                <Sliders className="h-3.5 w-3.5" style={{ color: activeTheme.accentColor }} />
-                <span>Customize Text</span>
-              </button>
             </div>
           </div>
 
@@ -145,33 +130,6 @@ export const HeroParallax: React.FC<HeroParallaxProps> = ({
           </div>
 
           <div className="relative pt-4">
-            <div className="mb-4 flex items-center justify-center">
-              <div className="flex flex-wrap items-center justify-center gap-1.5 rounded-2xl border border-white/10 bg-black/70 p-1.5 backdrop-blur-md">
-                {DEFAULT_THEMES.map((theme, idx) => {
-                  const isActive = idx === config.activeThemeIndex;
-                  return (
-                    <button
-                      key={theme.id}
-                      onClick={() => onThemeChange(idx)}
-                      className={`group relative flex items-center gap-2 rounded-xl px-3 py-1.5 text-xs transition-all ${
-                        isActive
-                          ? 'text-white font-bold bg-white/10 border border-white/20'
-                          : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
-                      }`}
-                    >
-                      <span
-                        className="font-mono text-[10px] font-bold"
-                        style={{ color: isActive ? activeTheme.accentColor : '#71717a' }}
-                      >
-                        {theme.indexNumber}
-                      </span>
-                      <span className="hidden sm:inline whitespace-nowrap">{theme.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
             <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-3">
               <div className="hidden sm:block" />
 

@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Sliders, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ThemePreset } from '../types';
 
 interface NavbarProps {
   communityName: string;
   activeTheme: ThemePreset;
-  onOpenCustomizer: () => void;
-  onJoinClick: () => void;
+  onOpenCustomizer?: () => void;
+  onJoinClick?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   communityName,
   activeTheme,
-  onOpenCustomizer,
-  onJoinClick,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -62,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 rounded-full border border-white/10 bg-black/40 px-5 py-2 backdrop-blur-md">
+        <nav className="hidden sm:flex items-center gap-6 rounded-full border border-white/10 bg-black/40 px-5 py-2 backdrop-blur-md">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -74,39 +72,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </nav>
 
-        {/* Action Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
-          {/* Live Customizer Trigger */}
-          <button
-            id="btn-nav-customizer"
-            onClick={onOpenCustomizer}
-            title="Open Live Website Customizer"
-            className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-zinc-200 hover:bg-white/10 hover:text-white transition-all"
-          >
-            <Sliders className="h-3.5 w-3.5" style={{ color: activeTheme.accentColor }} />
-            <span>Customize</span>
-          </button>
-
-          {/* Join CTA */}
-          <button
-            id="btn-nav-join"
-            onClick={onJoinClick}
-            className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-black shadow-lg transition-all hover:scale-105 active:scale-95"
-            style={{
-              backgroundColor: activeTheme.accentColor,
-              boxShadow: `0 0 20px -3px ${activeTheme.accentColor}60`,
-            }}
-          >
-            <span>Contact Me</span>
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </button>
-        </div>
-
         {/* Mobile Menu Toggle */}
         <button
           id="btn-toggle-mobile-menu"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300"
+          className="sm:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300"
           aria-label="Toggle Navigation Menu"
         >
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -119,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="lg:hidden border-b border-white/10 bg-[#0c0d12] px-6 py-6"
+          className="sm:hidden border-b border-white/10 bg-[#0c0d12] px-6 py-6"
         >
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
@@ -132,29 +102,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {link.label}
               </a>
             ))}
-            <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCustomizer();
-                }}
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-2.5 text-xs font-medium text-white"
-              >
-                <Sliders className="h-4 w-4" style={{ color: activeTheme.accentColor }} />
-                <span>Customize Community Page</span>
-              </button>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onJoinClick();
-                }}
-                className="flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold text-black"
-                style={{ backgroundColor: activeTheme.accentColor }}
-              >
-                <span>Contact Me</span>
-                <Sparkles className="h-4 w-4" />
-              </button>
-            </div>
           </div>
         </motion.div>
       )}

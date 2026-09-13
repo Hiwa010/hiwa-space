@@ -149,7 +149,7 @@ export const PortfolioGridSection: React.FC<PortfolioGridSectionProps> = ({
                 title: 'Motion Graphics',
                 icon: Zap,
                 desc: 'Kinetic typo, 3D particle logos & tactile UI micro-animations.',
-                count: '0 Featured',
+                count: '1 Featured',
               },
               {
                 id: 'Movie Edits',
@@ -311,8 +311,17 @@ export const PortfolioGridSection: React.FC<PortfolioGridSectionProps> = ({
                         onClick={() => setSelectedItem(item)}
                         className="flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold text-zinc-200 hover:bg-white/15 hover:text-white transition-all shadow-sm group-hover:border-white/30"
                       >
-                        <Eye className="h-3.5 w-3.5" style={{ color: activeTheme.accentColor }} />
-                        <span>Inspect</span>
+                        {isVideoOrMotion ? (
+                          <>
+                            <Play className="h-3.5 w-3.5 fill-current text-orange-400" />
+                            <span>Watch</span>
+                          </>
+                        ) : (
+                          <>
+                            <Eye className="h-3.5 w-3.5" style={{ color: activeTheme.accentColor }} />
+                            <span>Inspect</span>
+                          </>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -322,31 +331,6 @@ export const PortfolioGridSection: React.FC<PortfolioGridSectionProps> = ({
             })}
           </AnimatePresence>
         </motion.div>
-
-        {/* Bottom Showcase CTA Banner */}
-        <div className="mt-16 rounded-3xl border border-white/10 bg-gradient-to-r from-[#12131d] via-[#0e0f17] to-[#12131d] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
-          <div className="space-y-2 text-center md:text-left">
-            <h3 className="font-heading text-xl sm:text-2xl font-bold text-white">
-              Have a Project in Mind?
-            </h3>
-            <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
-              Available for bespoke brand identity systems, high-converting video edits, album key visual campaigns, and web motion graphics.
-            </p>
-          </div>
-
-          <button
-            onClick={onContactClick}
-            className="flex items-center gap-2 rounded-2xl px-6 py-3.5 text-xs font-bold text-black shadow-lg transition-all hover:scale-105 active:scale-95"
-            style={{
-              backgroundColor: activeTheme.accentColor,
-              boxShadow: `0 0 25px -4px ${activeTheme.accentColor}60`,
-            }}
-          >
-            <span>Start a Project Discussion</span>
-            <Sparkles className="h-4 w-4" />
-          </button>
-        </div>
-
       </div>
 
       {/* Portfolio Item Detail Lightbox Modal */}

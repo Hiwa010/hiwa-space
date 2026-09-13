@@ -53,7 +53,6 @@ export default function App() {
       <HeroParallax
         config={config}
         activeTheme={activeTheme}
-        onThemeChange={handleThemeChange}
         onOpenCustomizer={() => setIsCustomizerOpen(true)}
         onJoinClick={() => setIsJoinModalOpen(true)}
       />
@@ -92,24 +91,6 @@ export default function App() {
         communityName={config.communityName}
         activeTheme={activeTheme}
       />
-
-      <div className="fixed bottom-6 right-6 z-40">
-        <button
-          id="btn-floating-quick-customizer"
-          onClick={() => setIsCustomizerOpen(true)}
-          className="flex items-center gap-2 rounded-full border border-white/20 bg-black/80 backdrop-blur-md px-4 py-2.5 text-xs font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:border-white/40 active:scale-95"
-          style={{
-            boxShadow: `0 0 25px -4px ${config.accentColor}50`,
-          }}
-        >
-          <span
-            className="h-2 w-2 rounded-full animate-ping"
-            style={{ backgroundColor: config.accentColor }}
-          />
-          <span>Customize Page</span>
-        </button>
-      </div>
-
     </div>
   );
 }

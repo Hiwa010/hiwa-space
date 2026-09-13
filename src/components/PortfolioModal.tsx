@@ -266,19 +266,20 @@ export const PortfolioModal: React.FC<PortfolioModalProps> = ({
                       </span>
                     )}
 
-                    {(isIframeVideo(currentSlide.url) || (currentSlide.type === 'video' && currentSlide.remoteUrl)) && (
+                    {(isIframeVideo(currentSlide.url) || (currentSlide.type === 'video' && (currentSlide.remoteUrl || currentSlide.url))) && (
                       <a
                         href={currentSlide.remoteUrl || currentSlide.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/5 hover:bg-white/15 border border-white/10 text-[11px] font-mono text-zinc-300 hover:text-white transition-all ml-1"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-[11px] font-mono font-medium text-red-200 hover:text-white transition-all ml-1 shadow-sm"
                       >
-                        <ExternalLink className="h-3 w-3" />
+                        <Play className="h-3 w-3 fill-red-400 text-red-400" />
                         <span>
                           {isYouTubeVideo(currentSlide.url || currentSlide.remoteUrl)
                             ? 'Watch on YouTube'
-                            : 'Google Drive Link'}
+                            : 'Open Video'}
                         </span>
+                        <ExternalLink className="h-2.5 w-2.5 opacity-70" />
                       </a>
                     )}
                   </div>
@@ -396,12 +397,31 @@ export const PortfolioModal: React.FC<PortfolioModalProps> = ({
 
           {/* Modal Footer Controls */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 bg-[#12131d] px-6 sm:px-8 py-4">
-            <button
-              onClick={onClose}
-              className="w-full sm:w-auto rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-semibold text-zinc-400 hover:text-white transition-colors"
-            >
-              Back to Gallery
-            </button>
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <button
+                onClick={onClose}
+                className="w-full sm:w-auto rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-semibold text-zinc-400 hover:text-white transition-colors"
+              >
+                Back to Gallery
+              </button>
+
+              {(isIframeVideo(currentSlide.url) || (currentSlide.type === 'video' && (currentSlide.remoteUrl || currentSlide.url))) && (
+                <a
+                  href={currentSlide.remoteUrl || currentSlide.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl border border-red-500/40 bg-red-600/20 px-4 py-2.5 text-xs font-semibold text-red-200 hover:bg-red-600/30 hover:text-white transition-all shadow-sm"
+                >
+                  <Play className="h-3.5 w-3.5 fill-current text-red-400" />
+                  <span>
+                    {isYouTubeVideo(currentSlide.url || currentSlide.remoteUrl)
+                      ? 'Open on YouTube'
+                      : 'Open Video'}
+                  </span>
+                  <ExternalLink className="h-3 w-3 opacity-80" />
+                </a>
+              )}
+            </div>
 
             <button
               onClick={() => {
